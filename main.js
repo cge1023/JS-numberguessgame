@@ -8,28 +8,72 @@
 //유저가 1~100 범위 밖에 숫자를 입력하면 알려준다. 기회를 깎지 않는다
 //유저가 이미 입력한 숫자를 또 입력하면, 알려준다, 기회를 깎지 않는다
 
-let computerNum = 0
+let computerNum = 0;
 
-let playButton = document.getElementById('play-button')
-let userInput = document.getElementById('user-input')
-let resultArea = document.getElementById('result-area')
+let playButton = document.getElementById("play-button");
+let userInput = document.getElementById("user-input");
+let resultArea = document.getElementById("result-area");
+let resetButton = document.getElementById("reset-button");
+let chanceArea = document.getElementById("chance-area");
+let history = [];
+let chances = 5;
+let gameOver = false;
 
-playButton.addEventListener('click', play);
+playButton.addEventListener("click", play);
+resetButton.addEventListener("click", reset);
+userInput.addEventListener("focus", function () {
+  userInput.value = "";
+});
 
 function pickRandomNum() {
-    computerNum = Math.floor(Math.random() * 100) + 1;
-    console.log('정답', computerNum);
+  computerNum = Math.floor(Math.random() * 100) + 1;
+  console.log("answer", computerNum);
 }
 
 function play() {
-    let userValue = userInput.value;
-    if (userValue < computerNum) {
-        resultArea.textContent = "UP!!"
-    }else if(userValue > computerNum) {
-        resultArea.textContent = "DOWN!!"
-    }else { 
-        resultArea.textContent = "THAT'S RIGHT!"
-    }
+  let userValue = userInput.value;
+
+  if (userValue < 1 || userValue > 100) {
+    resultArea.textContent = "Please enter number between 1 and 100";
+    return;
+  }
+
+  if (history.includes(userValue)) {
+    resultArea.textContent =
+      "Number already been tried, please enter another number.";
+    return;
+  }
+
+  chances--;
+  chanceArea.textContent = `Chances left : ${chances} / 5`;
+
+  if (userValue < computerNum) {
+    resultArea.textContent = "UP!!";
+  } else if (userValue > computerNum) {
+    resultArea.textContent = "DOWN!!";
+  } else {
+    resultArea.textContent = "THAT'S RIGHT!";
+    gameOver = true;
+  }
+
+  history.push(userValue);
+  console.log(history);
+
+  if (chances < 1) {
+    gameOver = true;
+  }
+
+  if (gameOver === true) {
+    playButton.disabled = true;
+  }
 }
 
-pickRandomNum()
+function reset() {
+  //user input창이 깨끗하게 정리되고
+  userInput.value = "";
+  //새로운 번호가 생성되고
+  pickRandomNum();
+  resultArea.textContent = "Result";
+}
+
+pickRandomNum();
