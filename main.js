@@ -48,11 +48,11 @@ function play() {
   chanceArea.textContent = `Chances left : ${chances} / 5`;
 
   if (userValue < computerNum) {
-    resultArea.textContent = "UP!!";
+    resultArea.textContent = "UP ⬆";
   } else if (userValue > computerNum) {
-    resultArea.textContent = "DOWN!!";
+    resultArea.textContent = "DOWN ⬇";
   } else {
-    resultArea.textContent = "THAT'S RIGHT!";
+    resultArea.textContent = "THAT'S RIGHT ";
     gameOver = true;
   }
 
@@ -74,6 +74,8 @@ function reset() {
   //새로운 번호가 생성되고
   pickRandomNum();
   resultArea.textContent = "Result";
+  playButton.disabled = false;
+  chances = 5;
 }
 
 pickRandomNum();

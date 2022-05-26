@@ -1,0 +1,72 @@
+body {
+    background-color: #A97A56;
+    font-family: 'Roboto', sans-serif;
+}
+
+.container {
+    border: 4px solid beige;
+    border-radius: 8px;
+    padding: 30px;
+    margin-bottom: 20px;
+}
+
+#title {
+    text-align: center;
+    color: beige;
+    font-size: 40px;
+}
+
+#result-area {
+    text-align: center;
+    font-size: 35px;
+    font-weight: bold;
+    color: beige;
+    margin-bottom: 20px;
+}
+
+#chance-area {
+    text-align: center;
+    font-size: 35px;
+    font-weight: bold;
+    color: beige;
+    margin-bottom: 20px;
+}
+
+#user-input {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    height: 40px;
+    margin-bottom: 20px;
+}
+
+#play-button {
+    display: block;
+    width: 80px;
+    height: 30px;
+    border-radius: 10px;
+    border: none;
+    background-color: #9A5937;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#play-button:hover {
+    border: 1px solid beige;
+}
+
+#reset-button {
+    display: block;
+    width: 80px;
+    height: 30px;
+    border-radius: 10px;
+    border: none;
+    background-color: #9A5937;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#reset-button:hover {
+    border: 1px solid beige;
+}
