@@ -53,17 +53,13 @@ function play() {
     resultArea.textContent = "DOWN ⬇";
   } else {
     resultArea.textContent = "THAT'S RIGHT ";
-    gameOver = true;
+    playButton.disabled = true;
   }
 
   history.push(userValue);
   console.log(history);
 
   if (chances < 1) {
-    gameOver = true;
-  }
-
-  if (gameOver === true) {
     playButton.disabled = true;
   }
 }
@@ -76,6 +72,7 @@ function reset() {
   resultArea.textContent = "Result";
   playButton.disabled = false;
   chances = 5;
+  history=[];
 }
 
 pickRandomNum();
